@@ -1,6 +1,6 @@
 /* Service worker do atalho: guarda só a casca (esta página, ícones e a tela de "sem internet").
    O app em si NUNCA é guardado em cache: ele vem sempre do servidor, ao vivo. */
-const VERSAO = "obra-v1";
+const VERSAO = "obra-v2";
 const CASCA = ["./", "./index.html", "./offline.html", "./manifest.webmanifest",
                "./icons/icone-192.png", "./icons/icone-512.png", "./icons/apple-touch-icon.png"];
 
