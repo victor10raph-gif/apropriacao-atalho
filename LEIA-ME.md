@@ -1,60 +1,41 @@
-# Atalho instalável do app (Apropriação de Obra)
+# Site + atalho — Apropriação de Obra
 
-Esta pasta é um site mínimo que abre o app em tela cheia, com ícone próprio,
-para instalar no celular ou tablet sem passar por loja de aplicativos.
+Estes arquivos substituem o conteúdo do repositório `apropriacao-atalho`.
 
-## Como publicar (uma vez só)
+## O que mudou
 
-Estes arquivos vão em um repositório **público** só do atalho, separado do repositório
-do app (que pode continuar privado). Aqui não há código nem senha: só a página que
-abre o app, a logo e os ícones.
+Antes, o endereço abria direto o app. Agora:
 
-1. No GitHub, crie um repositório novo: **New repository** → nome `apropriacao-atalho`
-   → marque **Public** → **Create repository**.
-2. Na página do repositório novo, clique em **uploading an existing file** (ou
-   **Add file → Upload files**) e arraste TODOS os arquivos desta pasta, inclusive a
-   pasta `icons`. Clique em **Commit changes**.
-3. Abra **Settings → Pages**. Em "Build and deployment", Source: **Deploy from a branch**;
-   Branch: **main** e pasta **/ (root)** → **Save**.
-4. Espere um ou dois minutos. O endereço do atalho será:
-   `https://victor10raph-gif.github.io/apropriacao-atalho/`
+- `/` (raiz) → **site da marca**, que explica o produto e tem os botões de instalar
+- `/app/` → o **atalho** que abre o app (é o que estava na raiz antes)
 
-## Como instalar no aparelho
+Quem já instalou o atalho no celular continua abrindo o app normalmente: a página da
+raiz detecta que está rodando como app instalado e manda direto para `/app/`.
 
-- **Android (Chrome):** abra o endereço do atalho, toque no menu de três pontos e
-  escolha **Instalar app** (ou "Adicionar à tela inicial").
-- **iPhone / iPad (Safari):** abra o endereço, toque em **Compartilhar** e escolha
-  **Adicionar à Tela de Início**. No iPhone isso só funciona pelo Safari.
+## Como subir no GitHub
 
-Depois de instalado, o app abre em tela cheia, sem barra de navegador, com a logo
-na tela inicial do aparelho.
+1. Abra o repositório `apropriacao-atalho`.
+2. Apague os arquivos antigos da raiz: `index.html`, `sw.js`, `manifest.webmanifest`.
+   (os ícones e o `offline.html` podem ficar — eles são substituídos pelos daqui)
+3. Clique em **Add file → Upload files** e arraste **o conteúdo desta pasta**
+   (os arquivos e as pastas `app/` e `icons/`), não a pasta inteira.
+4. Confirme com **Commit changes**.
+5. Espere 1 a 2 minutos e abra o endereço do GitHub Pages.
 
-## Confira no primeiro uso
+## Depois de subir
 
-- entrar com usuário e senha;
-- salvar uma apropriação **com foto** (enviando arquivo e pela câmera);
-- baixar um PDF (RDO ou boletim).
-
-Se o envio de foto falhar com erro 403, acrescente esta linha em
-`.streamlit/config.toml`, na seção `[server]`, e publique de novo:
-
-    [server]
-    enableXsrfProtection = false
-
-Isso é necessário porque o app roda dentro desta página, em outro endereço, e
-alguns navegadores bloqueiam o cookie de segurança usado no envio de arquivos.
-
-## Depois, se for para a Play Store
-
-Esta mesma pasta serve de base: é a partir dela que se gera o APK/AAB
-(com Bubblewrap ou PWABuilder). O arquivo de verificação do domínio
-(`.well-known/assetlinks.json`) também vai aqui dentro, nesta pasta.
+- No celular, **feche o atalho pelo gerenciador de apps e abra de novo**: o service worker
+  só troca de versão quando todas as janelas são fechadas.
+- Para divulgar, mande o endereço da **raiz** (o site), não mais o do app.
 
 ## Arquivos
 
-- `index.html` — a página que abre o app (contém o endereço a configurar)
-- `manifest.webmanifest` — nome, cores e ícones do app instalado
-- `sw.js` — guarda só a casca; o app vem sempre do servidor
-- `offline.html` — tela mostrada quando não há internet
-- `icons/` — ícones em vários tamanhos
-- `.nojekyll` — evita que o GitHub Pages ignore arquivos iniciados por ponto
+| Arquivo | Para que serve |
+|---|---|
+| `index.html` | O site da marca |
+| `app/index.html` | O atalho que abre o app dentro de uma casca própria |
+| `manifest.webmanifest` | Diz ao celular o nome, o ícone e que ao instalar deve abrir `/app/` |
+| `sw.js` | Guarda a casca para abrir rápido e avisar quando está sem internet |
+| `offline.html` | Tela de "sem internet" |
+| `icons/` | Ícones do app |
+| `.nojekyll` | Impede o GitHub de processar os arquivos como blog |

@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Apropriação de Obra — sua obra inteira sob controle</title>
+<meta name="description" content="Apropriação diária, efetivo, diário de obra, medição e resultado financeiro da obra em um só lugar. Funciona no celular, no tablet e no computador.">
+<meta name="theme-color" content="#1C345E">
+<meta property="og:title" content="Apropriação de Obra">
+<meta property="og:description" content="Sua obra inteira sob controle, do canteiro ao faturamento.">
+<meta property="og:type" content="website">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="icons/icone-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#1C345E;--navy-d:#132644;--navy-2:#2A4A7F;--amber:#F0A202;--amber-d:#A87300;
+      --bg:#F4F6FA;--card:#fff;--line:#E3E8F0;--ink:#16213A;--muted:#5D6B82;--soft:#EEF2F8;
+      --sombra:0 1px 2px rgba(16,24,40,.05),0 8px 24px rgba(16,24,40,.08);
+      --fonte:'Inter','Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--fonte);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+.env{max-width:1120px;margin:0 auto;padding:0 1.25rem;}
+h1,h2,h3{color:var(--navy);letter-spacing:-.02em;line-height:1.15;margin:0 0 .6rem;}
+h1{font-size:clamp(2rem,5vw,3.25rem);font-weight:800;}
+h2{font-size:clamp(1.5rem,3.4vw,2.1rem);font-weight:800;}
+h3{font-size:1.12rem;font-weight:700;}
+p{margin:0 0 1rem;}
+a{color:var(--navy-2);}
+.sub{color:var(--muted);font-size:1.08rem;}
+
+/* ---- topo ---- */
+header{position:sticky;top:0;z-index:50;background:rgba(244,246,250,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
+.topo{display:flex;align-items:center;gap:1rem;padding:.7rem 0;}
+.marca{display:flex;align-items:center;gap:.6rem;text-decoration:none;}
+.marca svg{width:38px;height:38px;border-radius:9px;box-shadow:0 3px 8px rgba(19,38,68,.22);}
+.marca b{display:block;color:var(--navy);font-size:1.05rem;font-weight:800;line-height:1.1;}
+.marca span{display:block;color:var(--amber-d);font-size:.62rem;font-weight:700;letter-spacing:.17em;}
+nav{margin-left:auto;display:flex;align-items:center;gap:1.4rem;}
+nav a{color:var(--muted);text-decoration:none;font-size:.95rem;font-weight:500;}
+nav a:hover{color:var(--navy);}
+@media(max-width:860px){nav .esconde{display:none;}}
+
+/* ---- botões ---- */
+.bt{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.8rem 1.35rem;border-radius:11px;border:1px solid transparent;
+    font-family:var(--fonte);font-size:1rem;font-weight:700;text-decoration:none;cursor:pointer;transition:transform .12s,box-shadow .12s,background .12s;}
+.bt:active{transform:translateY(1px);}
+.bt-p{background:var(--navy);color:#fff;box-shadow:0 4px 14px rgba(28,52,94,.3);}
+.bt-p:hover{background:var(--navy-d);}
+.bt-a{background:var(--amber);color:#2A1C00;box-shadow:0 4px 14px rgba(240,162,2,.3);}
+.bt-a:hover{background:#DB9402;}
+.bt-s{background:#fff;color:var(--navy);border-color:var(--line);}
+.bt-s:hover{border-color:var(--navy-2);}
+.bt-peq{padding:.55rem 1rem;font-size:.92rem;}
+
+/* ---- herói ---- */
+.heroi{padding:3.5rem 0 2.5rem;}
+.heroi .grade{display:grid;grid-template-columns:1.05fr .95fr;gap:3rem;align-items:center;}
+.selo{display:inline-flex;align-items:center;gap:.45rem;background:#fff;border:1px solid var(--line);color:var(--muted);
+      border-radius:999px;padding:.32rem .8rem;font-size:.82rem;font-weight:600;margin-bottom:1.1rem;}
+.selo i{width:7px;height:7px;border-radius:50%;background:var(--amber);font-style:normal;}
+.heroi h1 em{font-style:normal;color:var(--amber-d);}
+.botoes{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.6rem;}
+.obs{color:var(--muted);font-size:.86rem;margin-top:.9rem;}
+.tela{background:var(--navy);border-radius:18px;padding:.85rem;box-shadow:var(--sombra);}
+.tela-in{background:#fff;border-radius:12px;overflow:hidden;}
+.tela-top{display:flex;gap:.3rem;padding:.5rem .7rem;background:var(--soft);border-bottom:1px solid var(--line);}
+.tela-top i{width:9px;height:9px;border-radius:50%;background:#D3DAE6;}
+.tela-corpo{padding:.9rem;}
+.linha-kpi{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;margin-bottom:.7rem;}
+.kpi{border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:9px;padding:.5rem .6rem;}
+.kpi small{display:block;color:var(--muted);font-size:.58rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;}
+.kpi b{color:var(--navy);font-size:1rem;}
+.barra{height:8px;border-radius:5px;background:var(--soft);margin:.45rem 0;overflow:hidden;}
+.barra i{display:block;height:100%;background:linear-gradient(90deg,var(--navy-2),var(--amber));}
+.mini{display:flex;justify-content:space-between;color:var(--muted);font-size:.68rem;}
+.graf{display:flex;align-items:flex-end;gap:5px;height:78px;margin-top:.8rem;}
+.graf i{flex:1;background:var(--navy-2);border-radius:3px 3px 0 0;opacity:.85;}
+.graf i:nth-child(5),.graf i:nth-child(6){background:var(--amber);}
+@media(max-width:900px){.heroi .grade{grid-template-columns:1fr;gap:2rem;}}
+
+/* ---- blocos ---- */
+section{padding:3.2rem 0;}
+.claro{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.cabeca{max-width:720px;margin-bottom:2rem;}
+.cartoes{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
+.cartao{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1.3rem;box-shadow:0 1px 2px rgba(16,24,40,.04);}
+.claro .cartao{background:var(--bg);}
+.cartao .ic{width:40px;height:40px;border-radius:10px;background:var(--navy);color:#fff;display:grid;place-items:center;font-size:1.15rem;margin-bottom:.8rem;}
+.cartao p{color:var(--muted);font-size:.95rem;margin:0;}
+@media(max-width:900px){.cartoes{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:620px){.cartoes{grid-template-columns:1fr;}}
+
+.antes{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;}
+.caixa{border-radius:14px;padding:1.4rem;}
+.ruim{background:#FEF3F2;border:1px solid #FDD;}
+.bom{background:#ECFDF3;border:1px solid #CFEBDA;}
+.caixa h3{margin-bottom:.8rem;}
+.ruim h3{color:#B42318;}
+.bom h3{color:#067647;}
+.caixa ul{margin:0;padding-left:1.1rem;color:var(--muted);font-size:.96rem;}
+.caixa li{margin-bottom:.5rem;}
+@media(max-width:760px){.antes{grid-template-columns:1fr;}}
+
+.passos{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;counter-reset:p;}
+.passo{position:relative;padding-top:.5rem;}
+.passo b{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--amber);color:#2A1C00;font-size:1rem;margin-bottom:.7rem;}
+.passo p{color:var(--muted);font-size:.95rem;}
+@media(max-width:760px){.passos{grid-template-columns:1fr;}}
+
+.seg{display:grid;grid-template-columns:repeat(2,1fr);gap:.9rem 2rem;}
+.item{display:flex;gap:.7rem;align-items:flex-start;}
+.item span{color:#067647;font-weight:800;}
+.item div{color:var(--muted);font-size:.96rem;}
+.item div b{color:var(--ink);display:block;font-weight:700;}
+@media(max-width:760px){.seg{grid-template-columns:1fr;}}
+
+/* ---- instalar ---- */
+.instalar{background:var(--navy);color:#fff;border-radius:20px;padding:2.6rem 2rem;text-align:center;}
+.instalar h2{color:#fff;}
+.instalar p{color:#C7D3E6;max-width:620px;margin:0 auto 1.6rem;}
+.instalar .botoes{justify-content:center;}
+.passo-ios{display:none;max-width:560px;margin:1.6rem auto 0;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);
+           border-radius:14px;padding:1.2rem 1.4rem;text-align:left;color:#E6EDF8;font-size:.95rem;}
+.passo-ios.ver{display:block;}
+.passo-ios ol{margin:.6rem 0 0;padding-left:1.2rem;}
+.passo-ios li{margin-bottom:.45rem;}
+.passo-ios b{color:#fff;}
+
+/* ---- contato e rodapé ---- */
+.contato{display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:space-between;
+         background:#fff;border:1px solid var(--line);border-radius:16px;padding:1.6rem 1.8rem;}
+footer{background:var(--navy-d);color:#A9B8D1;padding:2rem 0;font-size:.88rem;}
+footer .env{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;align-items:center;}
+footer b{color:#fff;}
+footer a{color:#C7D3E6;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="env topo">
+    <a class="marca" href="#">
+      <svg viewBox="0 0 64 64" aria-label="Apropriação de Obra"><rect width="64" height="64" rx="14" fill="#1C345E"/>
+        <polygon points="14,36 23,30.5 23,50 14,50" fill="#fff"/><polygon points="27.5,27.75 36.5,22.25 36.5,50 27.5,50" fill="#fff"/>
+        <polygon points="41,19.5 50,14 50,50 41,50" fill="#F0A202"/><rect x="14" y="52" width="36" height="3" rx="1.5" fill="#fff" opacity=".55"/></svg>
+      <span style="display:block"><b>Apropriação</b><span>DE OBRA</span></span>
+    </a>
+    <nav>
+      <a class="esconde" href="#solucao">O que resolve</a>
+      <a class="esconde" href="#recursos">Recursos</a>
+      <a class="esconde" href="#seguranca">Segurança</a>
+      <a class="bt bt-p bt-peq" href="#instalar">Instalar</a>
+    </nav>
+  </div>
+</header>
+
+<section class="heroi">
+  <div class="env grade">
+    <div>
+      <div class="selo"><i></i> Feito por quem vive canteiro de obra</div>
+      <h1>Sua obra inteira sob controle, <em>do canteiro ao faturamento</em>.</h1>
+      <p class="sub">Apropriação diária, efetivo, diário de obra, medição e resultado financeiro no mesmo lugar.
+        O encarregado lança do celular, no pé do serviço, e a medição, o RDO e a curva S saem prontos — sem planilha solta, sem papel que some.</p>
+      <div class="botoes">
+        <a class="bt bt-a" href="#instalar">Instalar no celular</a>
+        <a class="bt bt-s" href="app/" target="_blank" rel="noopener">Abrir no navegador</a>
+      </div>
+      <p class="obs">Funciona no celular, no tablet e no computador. Instala em um toque, sem loja de aplicativos.</p>
+    </div>
+    <div class="tela" aria-hidden="true">
+      <div class="tela-in">
+        <div class="tela-top"><i></i><i></i><i></i></div>
+        <div class="tela-corpo">
+          <div class="linha-kpi">
+            <div class="kpi"><small>Avanço físico</small><b>38,4%</b></div>
+            <div class="kpi"><small>Financeiro</small><b>35,1%</b></div>
+            <div class="kpi"><small>IDP</small><b>0,91</b></div>
+          </div>
+          <div class="mini"><span>Alvenaria · Bloco 1</span><span>72%</span></div>
+          <div class="barra"><i style="width:72%"></i></div>
+          <div class="mini"><span>Estrutura · Térreo</span><span>45%</span></div>
+          <div class="barra"><i style="width:45%"></i></div>
+          <div class="mini"><span>Instalações · Bloco 2</span><span>18%</span></div>
+          <div class="barra"><i style="width:18%"></i></div>
+          <div class="graf"><i style="height:38%"></i><i style="height:52%"></i><i style="height:47%"></i><i style="height:66%"></i>
+            <i style="height:78%"></i><i style="height:92%"></i></div>
+          <div class="mini" style="margin-top:.4rem"><span>Avanço por semana</span><span>previsto × realizado</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="claro" id="solucao">
+  <div class="env">
+    <div class="cabeca">
+      <h2>O controle da obra não se perde por falta de esforço</h2>
+      <p class="sub">Ele se perde no caminho entre o canteiro e o escritório: o que foi feito hoje chega amanhã, em outro formato, para outra pessoa digitar de novo.</p>
+    </div>
+    <div class="antes">
+      <div class="caixa ruim">
+        <h3>Como costuma ser</h3>
+        <ul>
+          <li>RDO preenchido no papel, assinado dias depois, guardado numa pasta que ninguém abre.</li>
+          <li>Avanço em planilha que só uma pessoa sabe mexer — e que trava quando ela sai de férias.</li>
+          <li>Medição fechada na correria, conferindo item por item contra o que foi executado.</li>
+          <li>Foto do serviço perdida no WhatsApp, sem saber de qual dia e de qual atividade era.</li>
+          <li>Ninguém sabe o custo real até o fechamento do mês — quando já não dá para reagir.</li>
+        </ul>
+      </div>
+      <div class="caixa bom">
+        <h3>Como fica</h3>
+        <ul>
+          <li>O encarregado lança o avanço e as fotos do celular, no pé do serviço, na hora.</li>
+          <li>O RDO do dia se monta sozinho com o que foi lançado, e é assinado pelo celular.</li>
+          <li>O boletim de medição sai do que já está registrado, em PDF, pronto para enviar.</li>
+          <li>Avanço físico, financeiro e curva S atualizados a cada lançamento.</li>
+          <li>Cada obra com seus dados, cada pessoa com o acesso certo, tudo registrado.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="recursos">
+  <div class="env">
+    <div class="cabeca">
+      <h2>O que o app faz</h2>
+      <p class="sub">Tudo o que a obra já produz todo dia, no mesmo lugar e conversando entre si.</p>
+    </div>
+    <div class="cartoes">
+      <div class="cartao"><div class="ic">📝</div><h3>Apropriação diária</h3>
+        <p>Bloco, pavimento, serviço, equipe, presença e quanto a atividade avançou. Com fotos, ocorrências e interferências do dia.</p></div>
+      <div class="cartao"><div class="ic">📋</div><h3>Diário de obra (RDO)</h3>
+        <p>Montado com o que foi lançado, com clima, efetivo, fotos e assinatura digital do responsável e do cliente. Depois de assinado, o dia trava.</p></div>
+      <div class="cartao"><div class="ic">👷</div><h3>Efetivo e equipes</h3>
+        <p>Mão de obra direta e indireta, presença diária, equipes por encarregado. Importa da planilha que você já usa.</p></div>
+      <div class="cartao"><div class="ic">📅</div><h3>Cronograma e avanço</h3>
+        <p>Importa o cronograma, acompanha previsto × realizado, curva S e atraso por atividade. Replaneja quando a obra muda.</p></div>
+      <div class="cartao"><div class="ic">📊</div><h3>Boletim de medição</h3>
+        <p>O período fecha com o avanço aprovado item a item, em PDF. O boletim fechado não muda mais — o que vier depois entra no próximo.</p></div>
+      <div class="cartao"><div class="ic">💰</div><h3>Resultado financeiro</h3>
+        <p>Venda, custo, aditivos, medido, a medir e IDP. Com projeção do que falta e quanto a obra precisa avançar para bater a meta.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="claro">
+  <div class="env">
+    <div class="cabeca"><h2>Como funciona</h2></div>
+    <div class="passos">
+      <div class="passo"><b>1</b><h3>Importa o que você já tem</h3>
+        <p>Planilha de venda, custo, cronograma e efetivo. O app lê os seus arquivos — não é preciso recadastrar a obra inteira.</p></div>
+      <div class="passo"><b>2</b><h3>A equipe lança no celular</h3>
+        <p>Cada encarregado registra o avanço do dia pelo telefone, com foto. Leva menos tempo do que preencher o papel.</p></div>
+      <div class="passo"><b>3</b><h3>Os relatórios saem prontos</h3>
+        <p>RDO, boletim de medição, avanço do período e projeção, em PDF, com a cara da sua empresa, a qualquer momento.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="seguranca">
+  <div class="env">
+    <div class="cabeca">
+      <h2>Os dados são seus — e ficam seguros</h2>
+      <p class="sub">A obra confia o registro do que foi executado ao app. Isso exige regra clara, e não promessa.</p>
+    </div>
+    <div class="seg">
+      <div class="item"><span>✓</span><div><b>Senha nunca é guardada</b>Fica só o resultado de um cálculo irreversível. Nem o administrador consegue ler a senha de alguém.</div></div>
+      <div class="item"><span>✓</span><div><b>Cada um vê o que lhe cabe</b>Acesso por perfil e por tela. O cliente vê só o que você liberar.</div></div>
+      <div class="item"><span>✓</span><div><b>Tudo fica registrado</b>Login, lançamento, correção, exclusão e importação, com autor, data e hora.</div></div>
+      <div class="item"><span>✓</span><div><b>Nada some por engano</b>O que é apagado vai para uma lixeira e o administrador recupera.</div></div>
+      <div class="item"><span>✓</span><div><b>RDO assinado trava o dia</b>Depois da assinatura, ninguém altera aquela data sem liberação registrada.</div></div>
+      <div class="item"><span>✓</span><div><b>Backup na sua mão</b>Você baixa a obra inteira quando quiser. Sem ficar refém de ninguém.</div></div>
+      <div class="item"><span>✓</span><div><b>Obras separadas</b>Cada obra guarda os dados no seu próprio espaço, sem cruzar com as outras.</div></div>
+      <div class="item"><span>✓</span><div><b>Banco profissional</b>PostgreSQL gerenciado, conexão criptografada e backup automático.</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="instalar">
+  <div class="env">
+    <div class="instalar">
+      <h2>Comece a usar agora</h2>
+      <p>Não precisa de loja de aplicativos nem de instalação no computador. Escolha por onde vai usar.</p>
+      <div class="botoes">
+        <button class="bt bt-a" id="bt-instalar" type="button">📲 Instalar no Android</button>
+        <button class="bt bt-s" id="bt-ios" type="button">📱 Instalar no iPhone</button>
+        <a class="bt bt-s" id="bt-abrir" href="app/" target="_blank" rel="noopener">💻 Abrir no navegador</a>
+      </div>
+      <div class="passo-ios" id="ios">
+        <b>No iPhone ou iPad, a instalação é manual</b> — a Apple não deixa o site fazer isso sozinho:
+        <ol>
+          <li>Abra este site no <b>Safari</b> (no Chrome do iPhone não funciona).</li>
+          <li>Toque no botão <b>Compartilhar</b>, aquele quadrado com a seta para cima.</li>
+          <li>Role a lista e toque em <b>Adicionar à Tela de Início</b>.</li>
+          <li>Confirme em <b>Adicionar</b>. O ícone aparece junto dos seus outros apps.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="env contato">
+    <div>
+      <h3 style="margin-bottom:.2rem">Quer usar na sua obra?</h3>
+      <p class="sub" style="margin:0">Conversamos sobre o seu caso e faço a implantação com as suas planilhas.</p>
+    </div>
+    <div class="botoes" style="margin:0">
+      <a class="bt bt-p" href="https://wa.me/5521984066578" target="_blank" rel="noopener">Falar no WhatsApp</a>
+      <a class="bt bt-s" href="mailto:victor10raph@gmail.com">Enviar e-mail</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="env">
+    <div><b>Apropriação de Obra</b><br>Sua obra inteira sob controle, do canteiro ao faturamento.</div>
+    <div>Desenvolvido por <b>Raphael V. S. Almeida</b><br>
+      <a href="mailto:victor10raph@gmail.com">victor10raph@gmail.com</a> · <a href="https://wa.me/5521984066578">WhatsApp 21 98406-6578</a></div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+  // quem já instalou o atalho abre direto no app, não nesta página de apresentação
+  var instalado = window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone === true;
+  if (instalado && location.pathname.indexOf("/app/") === -1) { location.replace("app/"); return; }
+
+  var ua = navigator.userAgent || "";
+  var ios = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  var android = /Android/i.test(ua);
+  var btInstalar = document.getElementById("bt-instalar");
+  var btIos = document.getElementById("bt-ios");
+    var passoIos = document.getElementById("ios");
+  var pronto = null;
+
+  if (ios) { btInstalar.style.display = "none"; }
+  else if (!android) { btInstalar.textContent = "📲 Instalar no computador"; }
+
+  // o Chrome avisa quando o atalho pode ser instalado: aí o botão passa a funcionar de verdade
+  window.addEventListener("beforeinstallprompt", function (e) {
+    e.preventDefault();
+    pronto = e;
+    btInstalar.disabled = false;
+  });
+
+  btInstalar.addEventListener("click", function () {
+    if (pronto) {
+      pronto.prompt();
+      pronto.userChoice.then(function () { pronto = null; });
+      return;
+    }
+    alert(android
+      ? "Para instalar: toque nos três pontinhos do Chrome, no canto superior direito, e escolha \"Instalar app\" (ou \"Adicionar à tela inicial\")."
+      : "Para instalar: no Chrome ou no Edge, clique no ícone de instalar na barra de endereço, ou abra o menu e escolha \"Instalar\".");
+  });
+
+  btIos.addEventListener("click", function () { passoIos.classList.toggle("ver"); });
+  if (ios) { btIos.textContent = "📱 Como instalar aqui no iPhone"; passoIos.classList.add("ver"); }
+
+  if ("serviceWorker" in navigator) {
+    addEventListener("load", function () { navigator.serviceWorker.register("sw.js").catch(function () {}); });
+  }
+})();
+</script>
+</body>
+</html>
