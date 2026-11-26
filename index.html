@@ -330,9 +330,20 @@ footer a{color:#C7D3E6;}
 <script>
 (function () {
   "use strict";
-  // quem já instalou o atalho abre direto no app, não nesta página de apresentação
+  // quem já instalou o atalho abre direto no app, não nesta página de apresentação.
+  // Exceção: o endereço com ?site=1 mostra o site mesmo dentro do app instalado.
   var instalado = window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone === true;
-  if (instalado && location.pathname.indexOf("/app/") === -1) { location.replace("app/"); return; }
+  var verSite = /[?&]site=/.test(location.search);
+  if (instalado && !verSite && location.pathname.indexOf("/app/") === -1) { location.replace("app/"); return; }
+  if (instalado && verSite) {                       // dentro do app, mas olhando o site: oferece a volta
+    var volta = document.createElement("a");
+    volta.href = "app/";
+    volta.textContent = "↩ Voltar ao app";
+    volta.style.cssText = "position:fixed;right:14px;bottom:14px;z-index:99;background:#1C345E;color:#fff;" +
+      "text-decoration:none;font:700 15px Inter,sans-serif;padding:.75rem 1.1rem;border-radius:11px;" +
+      "box-shadow:0 6px 18px rgba(16,24,40,.3)";
+    document.body.appendChild(volta);
+  }
 
   var ua = navigator.userAgent || "";
   var ios = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);

@@ -103,6 +103,18 @@
   frame.addEventListener("load", () => { ajustar(true); setTimeout(() => ajustar(true), 1500); });
   ajustar(true);
 
+  // um jeito de chegar ao site da marca mesmo de dentro do app instalado
+  var sobre = document.createElement("a");
+  sobre.href = "../?site=1";
+  sobre.title = "Sobre o app";
+  sobre.textContent = "i";
+  sobre.style.cssText = "position:fixed;left:10px;bottom:10px;z-index:40;width:26px;height:26px;border-radius:50%;" +
+    "background:rgba(28,52,94,.55);color:#fff;font:700 15px/26px Georgia,serif;text-align:center;text-decoration:none;" +
+    "opacity:.45;transition:opacity .2s";
+  sobre.onmouseenter = function () { sobre.style.opacity = "1"; };
+  sobre.onmouseleave = function () { sobre.style.opacity = ".45"; };
+  document.body.appendChild(sobre);
+
   const net = document.getElementById("sem-net");
   const verNet = () => net.classList.toggle("ver", !navigator.onLine);
   addEventListener("online", verNet); addEventListener("offline", verNet); verNet();

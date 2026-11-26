@@ -22,6 +22,22 @@ raiz detecta que está rodando como app instalado e manda direto para `/app/`.
 4. Confirme com **Commit changes**.
 5. Espere 1 a 2 minutos e abra o endereço do GitHub Pages.
 
+## Ver o site quando o app já está instalado
+
+No Android, tocar num link que pertence ao app instalado abre o app, não o navegador — e a
+página da raiz, ao perceber que está rodando dentro do app, vai direto para `/app/`.
+
+Para ver o site mesmo assim, use o endereço com `?site=1` no fim:
+
+    https://victor10raph-gif.github.io/apropriacao-atalho/?site=1
+
+Esse é o link para divulgar a quem já tem o app instalado (você, por exemplo, ao mostrar para
+um cliente). Nele aparece um botão **↩ Voltar ao app** no canto inferior direito.
+
+Dentro do app há também um **i** discreto no canto inferior esquerdo que leva ao site.
+
+Para quem ainda não instalou nada, o link normal (sem `?site=1`) mostra o site direto.
+
 ## Depois de subir
 
 - No celular, **feche o atalho pelo gerenciador de apps e abra de novo**: o service worker
