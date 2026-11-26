@@ -2,7 +2,20 @@
 
 Estes arquivos substituem o conteúdo do repositório `apropriacao-atalho`.
 
-## O que mudou
+## Nesta versão
+
+O site foi refeito para mostrar o app inteiro: planejamento e replanejamento, custo real,
+empresas, identidade visual por obra e todo o resto. Tem uma seção nova, **"Tudo o que o app
+faz, por dentro"**, com um bloco por módulo e a lista do que cada um faz.
+
+A versão do `sw.js` subiu para `obra-v5` — é isso que faz quem já visitou o site receber a
+página nova em vez da guardada no celular. **Se você mexer no site de novo, suba esse número**,
+senão o visitante antigo continua vendo a versão velha.
+
+Para atualizar: basta substituir `index.html`, `sw.js` e `LEIA-ME.md` no repositório. O resto
+(`app/`, ícones, manifest, offline) não mudou.
+
+## O que mudou na estrutura (da primeira publicação)
 
 Antes, o endereço abria direto o app. Agora:
 
