@@ -106,21 +106,18 @@ section{padding:3.2rem 0;}
 .caixa li{margin-bottom:.5rem;}
 @media(max-width:760px){.antes{grid-template-columns:1fr;}}
 
-.modulos{display:grid;grid-template-columns:repeat(2,1fr);gap:.9rem;align-items:start;}
-.mod{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:0 1px 2px rgba(16,24,40,.04);overflow:hidden;}
-.mod>summary{list-style:none;cursor:pointer;padding:1.05rem 1.2rem;display:flex;align-items:center;gap:.75rem;
-  font-weight:700;color:var(--navy);font-size:1.02rem;}
-.mod>summary::-webkit-details-marker{display:none;}
-.mod>summary .ic{flex:0 0 34px;height:34px;border-radius:9px;background:var(--navy);color:#fff;display:grid;place-items:center;font-size:1rem;}
-.mod>summary .seta{margin-left:auto;color:var(--muted);font-size:.85rem;transition:transform .18s;}
-.mod[open]>summary .seta{transform:rotate(90deg);}
-.mod[open]>summary{border-bottom:1px solid var(--line);}
-.mod ul{margin:0;padding:.95rem 1.2rem .95rem 2.6rem;}
-.mod li{color:var(--muted);font-size:.95rem;margin-bottom:.45rem;}
-.mod li::marker{color:var(--amber-d);}
-.mod li:last-child{margin-bottom:0;}
-.mod li b{color:var(--ink);font-weight:600;}
-@media(max-width:860px){.modulos{grid-template-columns:1fr;}}
+.dif-sec{background:var(--navy);color:#fff;}
+.dif-sec h2{color:#fff;}
+.dif-sec .sub{color:#C3D0E4;}
+.dif-sec .sub b{color:var(--amber);font-weight:700;}
+.difs{display:grid;grid-template-columns:repeat(2,1fr);gap:1.6rem 2.2rem;}
+.dif{position:relative;padding-left:3.6rem;}
+.dif .n{position:absolute;left:0;top:-.1rem;font-size:1.05rem;font-weight:800;color:var(--amber);
+  border:2px solid rgba(240,162,2,.35);border-radius:9px;width:2.6rem;height:2.6rem;display:grid;place-items:center;}
+.dif h3{color:#fff;font-size:1.12rem;margin-bottom:.4rem;}
+.dif p{color:#C3D0E4;font-size:.97rem;margin:0;}
+.dif-rod{margin:2.2rem 0 0;padding-top:1.4rem;border-top:1px solid rgba(255,255,255,.14);color:#C3D0E4;font-size:1rem;}
+@media(max-width:860px){.difs{grid-template-columns:1fr;gap:1.5rem;}}
 .passos{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;counter-reset:p;}
 .passo{position:relative;padding-top:.5rem;}
 .passo b{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--amber);color:#2A1C00;font-size:1rem;margin-bottom:.7rem;}
@@ -168,8 +165,8 @@ footer a{color:#C7D3E6;}
     </a>
     <nav>
       <a class="esconde" href="#solucao">O que resolve</a>
-      <a class="esconde" href="#recursos">Recursos</a>
-      <a class="esconde" href="#modulos">Tudo o que faz</a>
+      <a class="esconde" href="#diferencial">Por que este</a>
+      <a class="esconde" href="#recursos">O que vem junto</a>
       <a class="esconde" href="#seguranca">Segurança</a>
       <a class="bt bt-p bt-peq" href="#instalar">Instalar</a>
     </nav>
@@ -246,31 +243,73 @@ footer a{color:#C7D3E6;}
   </div>
 </section>
 
+<section id="diferencial" class="dif-sec">
+  <div class="env">
+    <div class="cabeca">
+      <h2>Por que este, e não uma planilha a mais</h2>
+      <p class="sub">Controlar obra todo mundo tenta. O que muda aqui é <b>quando</b> você fica sabendo — e se consegue provar.</p>
+    </div>
+    <div class="difs">
+      <div class="dif">
+        <span class="n">01</span>
+        <h3>Um lançamento alimenta a obra inteira</h3>
+        <p>O encarregado registra o avanço do dia uma vez. Daquele mesmo lançamento saem o RDO, a curva S, o boletim de
+          medição e o custo real. Ninguém redigita nada em lugar nenhum, e não existe versão divergente: o número que o
+          canteiro informou é o número que o escritório vê, e é o mesmo que vai para o cliente.</p>
+      </div>
+      <div class="dif">
+        <span class="n">02</span>
+        <h3>Você descobre o prejuízo a tempo de reagir</h3>
+        <p>Como a apropriação e o efetivo estão no mesmo lugar, as horas de quem trabalhou são distribuídas entre as
+          atividades que avançaram. O custo real de cada serviço aparece no dia seguinte, não no fechamento do mês.
+          Quando o desvio contra o orçado aparece, ainda dá para trocar a equipe, o método ou o fornecedor — que é
+          a única hora em que isso adianta alguma coisa.</p>
+      </div>
+      <div class="dif">
+        <span class="n">03</span>
+        <h3>O atraso fica rastreável — e defensável</h3>
+        <p>O cronograma é conferido, fechado, e passa a valer. Daí em diante a data só muda por replanejamento, com
+          motivo registrado e o cenário anterior guardado. Quando perguntarem por que a entrega mudou, a resposta está
+          documentada: o que mudou, quando, por quê e quem fez. É a diferença entre justificar um atraso e sustentar
+          um pleito.</p>
+      </div>
+      <div class="dif">
+        <span class="n">04</span>
+        <h3>Replanejar sem abrir o Project</h3>
+        <p>Mexeu numa data e as dependentes andam junto, respeitando o calendário da obra. Um botão empurra tudo o que
+          está atrasado, levando só o saldo do que está em andamento. O planejador replaneja um cronograma de centenas
+          de atividades na própria tela — e o canteiro já lança contra as datas novas no mesmo dia.</p>
+      </div>
+    </div>
+    <p class="dif-rod">E no fim, os dados são seus: a obra inteira sai em Excel quando você quiser, com ou sem o app.</p>
+  </div>
+</section>
+
 <section id="recursos">
   <div class="env">
     <div class="cabeca">
-      <h2>O que o app faz</h2>
+      <h2>O que vem junto</h2>
       <p class="sub">Tudo o que a obra já produz todo dia, no mesmo lugar e conversando entre si.</p>
     </div>
     <div class="cartoes">
       <div class="cartao"><div class="ic">📝</div><h3>Apropriação diária</h3>
-        <p>Bloco, pavimento, serviço, equipe e quanto a atividade avançou no dia. Com várias fotos por lançamento, ocorrências e interferências.</p></div>
-      <div class="cartao"><div class="ic">📐</div><h3>Planejamento e replanejamento</h3>
-        <p>O cronograma entra por planilha, é fechado para valer e depois só muda por replanejamento — na tela, com as dependentes andando junto e o motivo registrado.</p></div>
+        <p>O avanço do dia lançado no celular, com foto, no pé do serviço.</p></div>
+      <div class="cartao"><div class="ic">📐</div><h3>Planejamento</h3>
+        <p>Cronograma importado, fechado para valer e replanejado sem sair do app.</p></div>
       <div class="cartao"><div class="ic">📄</div><h3>Diário de obra (RDO)</h3>
-        <p>Montado com o que foi lançado: clima, efetivo, fotos e assinatura do responsável e do cliente. Depois de assinado, o dia trava.</p></div>
+        <p>O RDO do dia se monta sozinho e é assinado pelo celular.</p></div>
       <div class="cartao"><div class="ic">🦺</div><h3>Efetivo e equipes</h3>
-        <p>Presença diária, férias e atestados com data de retorno, transferências com destino. Equipes por encarregado e lista de presença em PDF.</p></div>
+        <p>Presença, férias, atestados e transferências, com lista de presença em PDF.</p></div>
       <div class="cartao"><div class="ic">📊</div><h3>Avanço e projeção</h3>
-        <p>Previsto × realizado, curva S, atraso por atividade e projeção do que falta — com quanto a obra precisa render para bater a meta.</p></div>
+        <p>Previsto × realizado, curva S e quando a obra termina no ritmo de hoje.</p></div>
       <div class="cartao"><div class="ic">🧾</div><h3>Boletim de medição</h3>
-        <p>A planilha de venda ligada ao cronograma: o período fecha com o avanço aprovado item a item, em PDF. Boletim fechado não muda mais.</p></div>
+        <p>O boletim do período sai do que já foi registrado, item a item, em PDF.</p></div>
       <div class="cartao"><div class="ic">💵</div><h3>Custo real</h3>
-        <p>Hora de mão de obra rateada por atividade, material, equipamento e serviços. Real × orçado por item, com o desvio apontado e explicado.</p></div>
-      <div class="cartao"><div class="ic">🏢</div><h3>Várias empresas e obras</h3>
-        <p>Cada empresa com seu cadastro, suas obras e sua marca. Logo da contratante, da contratada e foto da obra entram nos relatórios.</p></div>
-      <div class="cartao"><div class="ic">🔐</div><h3>Acesso, auditoria e backup</h3>
-        <p>Permissão por página e por obra, registro de quem fez o quê e a obra inteira exportável em Excel a qualquer momento.</p></div>
+        <p>Mão de obra, material e serviços por atividade, comparados com o orçado.</p></div>
+      <div class="cartao"><div class="ic">🏢</div><h3>Empresas e obras</h3>
+        <p>Várias obras no mesmo app, cada uma com a marca das empresas nos relatórios.</p></div>
+      <div class="cartao"><div class="ic">🔐</div><h3>Acesso e auditoria</h3>
+        <p>Permissão por pessoa e por obra, com registro de quem fez o quê.</p></div>
     </div>
   </div>
 </section>
@@ -288,107 +327,6 @@ footer a{color:#C7D3E6;}
         <p>Cada encarregado registra o avanço do dia pelo telefone, com foto. Leva menos tempo do que preencher o papel.</p></div>
       <div class="passo"><b>4</b><h3>Os relatórios saem prontos</h3>
         <p>RDO, lista de presença, boletim de medição, avanço, projeção e custo real — em PDF, com a marca das empresas, a qualquer momento.</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="modulos">
-  <div class="env">
-    <div class="cabeca">
-      <h2>Tudo o que o app faz, por dentro</h2>
-      <p class="sub">Cada módulo abaixo já está no ar e em uso. Abra para ver o que tem dentro.</p>
-      <button class="bt bt-s bt-peq" id="bt-tudo" type="button" style="margin-top:.4rem">Abrir todos</button>
-    </div>
-    <div class="modulos">
-      <details class="mod" open>
-        <summary><span class="ic">📝</span>Apropriação diária<span class="seta">▶</span></summary>
-        <ul>
-          <li>Lançamento por <b>bloco, pavimento, serviço e equipe</b>, com quanto cada atividade avançou no dia.</li>
-          <li><b>Várias fotos</b> por lançamento. A câmera só é acionada quando você clica — não fica ligada ao abrir o app.</li>
-          <li>Editar ou excluir um lançamento feito por engano.</li>
-          <li>Aviso quando a atividade <b>já foi apropriada hoje</b> por outra pessoa, e quando alguém está mexendo na mesma tela.</li>
-          <li>Ocorrências e interferências do dia, que entram direto no RDO.</li>
-        </ul>
-      </details>
-      <details class="mod">
-        <summary><span class="ic">📐</span>Planejamento e replanejamento<span class="seta">▶</span></summary>
-        <ul>
-          <li>Cronograma importado por <b>planilha</b> ou cadastrado na mão, com blocos, pavimentos, serviços e predecessoras.</li>
-          <li>Botão de <b>fechar o cronograma</b>: a partir dali ninguém adiciona nem importa atividade, e as datas só mudam por replanejamento. É o que torna o atraso rastreável.</li>
-          <li><b>Replanejar na tela</b>: mexeu numa data, as dependentes andam junto — fim-início, início-início e fim-fim, com folga.</li>
-          <li><b>Calendário de trabalho</b> da obra: dias da semana e feriados. A duração é contada em dias úteis.</li>
-          <li><b>Empurrar o que está atrasado</b> a partir de uma data; no que está em andamento vai só o saldo que falta.</li>
-          <li>Deslocar um bloco de atividades de uma vez, e <b>sugerir amarração</b> para cronograma que não usa predecessoras.</li>
-          <li>Prévia do <b>antes e depois</b> com a diferença em dias e o novo fim da obra, motivo obrigatório e histórico de versões.</li>
-          <li>Diagnóstico do cronograma: quanto está amarrado, predecessora que aponta para o nada e ciclos.</li>
-        </ul>
-      </details>
-      <details class="mod">
-        <summary><span class="ic">📄</span>Diário de obra (RDO)<span class="seta">▶</span></summary>
-        <ul>
-          <li>Montado com o que foi lançado no dia: tempo e condição de manhã e à tarde, efetivo, atividades, ocorrências e fotos.</li>
-          <li><b>Assinatura digital</b> do responsável pela obra e do cliente. Depois de assinado, o dia trava.</li>
-          <li>PDF de um dia, de um <b>período inteiro</b> ou de todos os RDOs em um pacote.</li>
-        </ul>
-      </details>
-      <details class="mod">
-        <summary><span class="ic">🦺</span>Efetivo e equipes<span class="seta">▶</span></summary>
-        <ul>
-          <li>Presença diária com a situação <b>em branco até alguém preencher</b>, para você ver o que falta.</li>
-          <li>Férias, atestado e afastamento com <b>data de início e de retorno</b> — a lista de presença mostra quando a pessoa volta e quantos dias ficou fora.</li>
-          <li><b>Transferidos</b> com destino e data, listados à parte.</li>
-          <li>Equipes por encarregado e importação do cadastro de colaboradores por planilha.</li>
-          <li>Lista de presença em PDF, pronta para assinar.</li>
-        </ul>
-      </details>
-      <details class="mod">
-        <summary><span class="ic">📊</span>Avanço, curva S e projeção<span class="seta">▶</span></summary>
-        <ul>
-          <li>Previsto × realizado por atividade, bloco e serviço, com atraso apontado.</li>
-          <li><b>Curva S</b> física e financeira, e avanço no período que você escolher.</li>
-          <li><b>Projeção</b> do que falta: no ritmo atual, quando termina — e quanto a obra precisa render para bater a data.</li>
-          <li>Relatórios em PDF com a marca das empresas no cabeçalho.</li>
-        </ul>
-      </details>
-      <details class="mod">
-        <summary><span class="ic">🧾</span>Venda, medição e faturamento<span class="seta">▶</span></summary>
-        <ul>
-          <li>Planilha de venda importada e <b>ligada às atividades</b> do cronograma: o avanço físico vira avanço em R$.</li>
-          <li><b>Boletim de medição</b> por período, com o percentual aprovado item a item, em PDF.</li>
-          <li>Boletim fechado não muda mais — o que vier depois entra no próximo.</li>
-          <li>Itens sem atividade ligada ficam visíveis, para não passarem em branco.</li>
-        </ul>
-      </details>
-      <details class="mod">
-        <summary><span class="ic">💵</span>Custo real e resultado da obra<span class="seta">▶</span></summary>
-        <ul>
-          <li><b>Custo-hora por função</b>, com vigência por data: o reajuste não reescreve o passado.</li>
-          <li><b>Quadro previsto de pessoal</b>, importável por planilha, para comparar com quem está de fato na obra.</li>
-          <li>As horas do efetivo são <b>rateadas entre as atividades</b> apropriadas, separando o que é indireto e o que não foi alocado.</li>
-          <li>Material, equipamento e serviços lançados por item, inclusive avulsos.</li>
-          <li><b>Real × orçado</b> por item da venda, com o IDC e o <b>desvio apontado e explicado</b> — se o problema está no orçamento ou na condução da obra.</li>
-          <li>Um guia mostra quais fontes já estão alimentadas e quais faltam.</li>
-        </ul>
-      </details>
-      <details class="mod">
-        <summary><span class="ic">🏢</span>Empresas, obras e identidade<span class="seta">▶</span></summary>
-        <ul>
-          <li><b>Várias empresas</b> no mesmo app, cada uma com suas obras.</li>
-          <li>Cadastro completo: razão social, <b>CNPJ validado</b> (inclusive o alfanumérico), inscrição estadual, endereço, contato e responsável.</li>
-          <li><b>Logo da contratante, logo da contratada e foto da obra</b>: as logos entram no cabeçalho de todos os relatórios, e a foto aparece no app.</li>
-          <li>A logo da empresa vale como padrão para todas as obras dela.</li>
-        </ul>
-      </details>
-      <details class="mod">
-        <summary><span class="ic">🔐</span>Acesso, auditoria e backup<span class="seta">▶</span></summary>
-        <ul>
-          <li>Perfis com <b>permissão por página</b>: quem só lança, quem só consulta, quem administra.</li>
-          <li>Acesso <b>por obra</b>: cada pessoa vê apenas as obras liberadas para ela.</li>
-          <li>Gestor do sistema acima dos administradores de obra, e troca de senha obrigatória no primeiro acesso.</li>
-          <li><b>Auditoria</b> de quem fez o quê e quando.</li>
-          <li>Backup técnico em .zip e a <b>obra inteira em Excel</b>, uma aba por assunto — a cópia que o cliente leva consigo.</li>
-        </ul>
-      </details>
     </div>
   </div>
 </section>
@@ -458,22 +396,6 @@ footer a{color:#C7D3E6;}
 </footer>
 
 <script>
-// "abrir todos" dos módulos: quem quiser ler tudo de uma vez não precisa clicar nove vezes
-(function(){
-  var b = document.getElementById('bt-tudo');
-  if (!b) return;
-  var mods = function(){ return Array.prototype.slice.call(document.querySelectorAll('#modulos .mod')); };
-  b.addEventListener('click', function(){
-    var abrir = b.textContent.indexOf('Abrir') === 0;
-    mods().forEach(function(m){ m.open = abrir; });
-    b.textContent = abrir ? 'Fechar todos' : 'Abrir todos';
-  });
-  document.addEventListener('toggle', function(e){
-    if (!e.target.classList || !e.target.classList.contains('mod')) return;
-    var todos = mods().every(function(m){ return m.open; });
-    b.textContent = todos ? 'Fechar todos' : 'Abrir todos';
-  }, true);
-})();
 
 (function () {
   "use strict";

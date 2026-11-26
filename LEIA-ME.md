@@ -4,9 +4,11 @@ Estes arquivos substituem o conteúdo do repositório `apropriacao-atalho`.
 
 ## Nesta versão
 
-O site foi refeito para mostrar o app inteiro: planejamento e replanejamento, custo real,
-empresas, identidade visual por obra e todo o resto. Tem uma seção nova, **"Tudo o que o app
-faz, por dentro"**, com um bloco por módulo e a lista do que cada um faz.
+O site foi refeito em torno do argumento de compra, e não da lista de telas. A seção
+**"Por que este, e não uma planilha a mais"** vem logo depois do problema e traz os quatro
+pontos que diferenciam o app; a lista de recursos ficou curta, uma linha por módulo, e passou
+para depois. Os módulos novos (planejamento e replanejamento, custo real, empresas e
+identidade visual por obra) estão contemplados nos dois lugares.
 
 A versão do `sw.js` subiu para `obra-v5` — é isso que faz quem já visitou o site receber a
 página nova em vez da guardada no celular. **Se você mexer no site de novo, suba esse número**,
